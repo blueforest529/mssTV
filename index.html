@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>미림 소프트웨어 쇼</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/TweenMax.min.js"></script>
+    <script type="text/javascript" src="js/jquery.waterwheelCarousel.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        var carousel = $("#carousel").waterwheelCarousel({
+          flankingItems: 3,
+          movingToCenter: function ($item) {
+            $('#callback-output').prepend('movingToCenter: ' + $item.attr('id') + '<br/>');
+          },
+          movedToCenter: function ($item) {
+            $('#callback-output').prepend('movedToCenter: ' + $item.attr('id') + '<br/>');
+          },
+          movingFromCenter: function ($item) {
+            $('#callback-output').prepend('movingFromCenter: ' + $item.attr('id') + '<br/>');
+          },
+          movedFromCenter: function ($item) {
+            $('#callback-output').prepend('movedFromCenter: ' + $item.attr('id') + '<br/>');
+          },
+          clickedCenter: function ($item) {
+            $('#callback-output').prepend('clickedCenter: ' + $item.attr('id') + '<br/>');
+          }
+        });
+        $('#prev').bind('click', function () {
+          carousel.prev();
+          return false
+        });
+
+        $('#next').bind('click', function () {
+          carousel.next();
+          return false;
+        });
+
+        $('#reload').bind('click', function () {
+          newOptions = eval("(" + $('#newoptions').val() + ")");
+          carousel.reload(newOptions);
+          return false;
+        });
+      });
+    </script>
+    <style type="text/css">
+      body {
+        font-family:"나눔고딕";
+        font-size:15px;
+      }
+      .example-desc {
+        margin:3px 0;
+        padding:5px;
+      }
+      #carousel {
+        width :1400px;
+        height:680px;
+        position:relative;
+        clear:both;
+        overflow:hidden;
+        margin-left: 50px;
+      }
+      #carousel div {
+        visibility:hidden; /* hide images until carousel can handle them */
+        cursor:pointer; /* otherwise it's not as obvious items can be clicked */
+        background-image: url('images/1.png');
+        width:500px;
+        height:600px;
+      }
+      #carousel h2 {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+      }
+      img{
+        width:500px;
+        height:600px;
+      }
+      .split-left {
+        width:450px;
+        float:left;
+      }
+      .split-right {
+        width:400px;
+        float:left;
+        margin-left:10px;
+      }
+      #callback-output {
+        height:250px;
+        overflow:scroll;
+      }
+      textarea#newoptions {
+        width:500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="carousel">
+
+      <div id="item-1">
+          <br><br><br><br><br><br><h1>&emsp;안녕</h1>
+      </div>
+
+      <div id="item-2">
+      <br><br><br><br><br><br><h1>&emsp;안농</h1>
+      </div>
+
+      <div id="item-3">
+        <br><br><br><br><br><br><h1>&emsp;Hello</h1>
+      </div>
+
+      <div  id="item-4">
+      <br><br><br><br><br><br><h1>&emsp;Hi</h1>
+      </div>
+
+      <div id="item-5" >
+      <br><br><br><br><br><br><h1>&emsp;미림</h1>
+      </div>
+
+      <div  id="item-6">
+      <br><br><br><br><br><br><h1>&emsp;소프트</h1>
+      </div>
+
+      <div id="item-7">
+      <br><br><br><br><br><br><h1>&emsp;웨어</h1>
+      </div>
+
+      <div id="item-8">
+      <br><br><br><br><br><br><h1>&emsp;쇼!</h1>
+      </div>
+
+      <div id="item-9">
+        <br><br><br><br><br><br><h1>&emsp;SHOW</h1>
+      </div>
+
+    </div>
+  </body>
+</html>
